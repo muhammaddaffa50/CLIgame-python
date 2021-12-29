@@ -1,484 +1,834 @@
-import random
 import time
-import os
-import getpass
 
 #deklarasi
 version = '0.0.1'
+playername = ''
+password = ''
 food = 0
+uang = 0
 health = 0
 maxhealth = 0
-jarak = 0
-playername = ''
-tahun = 0
-datemonth = 'november'
-bulan = 1
-jarakgerakplayer = 0
-hari = 1
-totalhari = 0
-bulan_31 = [1,3,5,7,8,10,12]
-random_hari = 0
-health_d1 = random.randint(1,31)
-health_d2 = random.randint(1,31)
-jalan_total = 0
-istrahat_total = 0
-berburu_total = 0
-status_total = 0
-event_k = random.randint(1,3)
 strength = 0
 agility = 0
-intelligent = 0
+intelligence = 0
+food2 = 0
+datalogin = [["daffa", "123"], ["syahfei", "123"], ["fauzi", "123"], ["akbar", "123"]]
 
-def tplayer():
-    global playername
-    global password
-    playername = input("input nama anda : ")
-    password = input("input password anda : ")
-    if playername == "daffa" and password == "wanted":
-        print("welcome daffa")
-        return years()
-    elif playername == "syahfei" and password == "123":
-        print("welcome fei")
-        return years()
-    elif playername == "fauzi" and password == "123":
-        print("welcome fauzi")
-    elif playername == "akbar" and password == "123":
-        print("welcome akbar")
-        return years()
-    else:
-        print("welcome to tawuran game")
-        return years()
-
-def years():
-    global tahun
-    tahun = input("masukkan tahun dimulainya perjalanan : ")
-    if tahun.isdigit():
-        return_num = 0
-    else:
-        return_num = 1
-    while return_num == 1:
-        print("error, bro")
-        tahun = input("masukkan tahun dimulainya perjalanan : ")
-        if tahun.isdigit():
-            return_num = 0
+def menupertama():
+    print("silakan pilih pilihan dibawah")
+    print("1. Register")
+    print("2. Login")
+    print("3. keluar")
+    inputs = input("masukkan pilihan anda : ")
+    if inputs == "1":
+        print("silahkan register")
+        username = input("masukkan username : ")
+        password = input("masukkan password : ")
+        register(username,password)
+    elif inputs == "2":
+        print("login")
+        username = input("masukkan username : ")
+        password = input("masukkan password : ")
+        login(username,password)
+    elif inputs == "3":
+        keluar = input("apakah anda mau main (Y,N) : ")
+        if keluar == "y":
+            menupertama()
+        elif keluar == "n":
+            print("goodbye player")
+            quit()
         else:
-            return_num = 1
+            print("salah input")
+            menupertama()
 
-    tahun = int(tahun)
-    return difficulty()
+def register(username,password):
+    global datalogin
+    i = 2
+    datalogin.insert(i,[username,password])
+    i = +1
+    return menupertama()
 
-def difficulty():
+def login(username,password):
+    global datalogin
+    while True:
+
+        for x in datalogin:
+            temp = x
+            for temp in datalogin:
+                if username == temp[0] and password == temp[1]:
+                    print("\n\n" + "selamat datang pemain " + temp[0])
+                    tingkatan()
+                    break
+            print("salah akun. \n\n")
+            menupertama()
+            break
+
+def tingkatan():
     global food
+    global uang
     global health
     global maxhealth
-    global jarak
 
     print("1. easy")
     print("2. medium")
     print("3. hard")
-    print("4. very hard")
+    print("4. HELL")
     pilihan = input("masukkan tingkat kesulitan : ")
     if pilihan == '1':
         food = 800
         health = 10
         maxhealth = 10
-        jarak = 2170
+        uang = 100000
         return roles1()
     elif pilihan == '2':
         food = 400
         health = 9
         maxhealth = 7
-        jarak = 2400
+        uang = 80000
         return roles1()
     elif pilihan == '3':
-        food = 200
+        food = 150
         health = 6
         maxhealth = 5
-        jarak = 3300
+        uang = 60000
         return roles1()
     elif pilihan == '4':
         food = 50
         health = 4
         maxhealth = 3
-        jarak = 3500
+        uang = 40000
         return roles1()
     elif playername == 'daffa' and pilihan == '5':
         food = 99999
         health = 99999
         maxhealth = 99999
-        jarak = 99999
+        uang = 99999
         print("wahhh cheater parah sih noob")
         return roles1()
     else:
         print("inputan salah")
-        return difficulty()
+        return tingkatan()
 
-def loading():
+def roles1():
+    global strength
+    global agility
+    global intelligence
+    print("pilih roles pertama anda")
+    print("1. strength")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. Tubuh yang kuat")
+    print("2. menaikan skill fisik lebih cepat")
+    print("kekurangan : ")
+    print("1. menaikan skill selain fisik lebih lama")
+    print("=========================================")
+    print("2. agility")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. Tubuh yang lincah")
+    print("2. menaikan skill lincah lebih cepat")
+    print("kekurangan : ")
+    print("1. menaikan skill selain lincah lebih lama")
+    print("=========================================")
+    print("3. intelligence")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. punya otak yang pintar")
+    print("2. menaikan skill otak ")
+    print("kekurangan : ")
+    print("1. menaikan skill selain fisik dan lincah lebih lama")
+    print("=========================================")
+    inputs = input("masukkan pilihan roles anda : ")
+    if inputs == "1":
+        strength = 900
+        return roles2()
+    elif inputs == "2":
+        agility = 300
+        return roles2()
+    elif inputs == "3":
+        intelligence = 600
+        return roles2()
+
+def roles2():
+    global strength
+    global agility
+    global intelligence
+    print("pilih roles kedua anda")
+    print("1. strength")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. Tubuh yang kuat")
+    print("2. menaikan skill fisik lebih cepat")
+    print("kekurangan : ")
+    print("1. menaikan skill selain fisik lebih lama")
+    print("=========================================")
+    print("2. agility")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. Tubuh yang lincah")
+    print("2. menaikan skill lincah lebih cepat")
+    print("kekurangan : ")
+    print("1. menaikan skill selain lincah lebih lama")
+    print("=========================================")
+    print("3. intelligence")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. punya otak yang pintar")
+    print("2. menaikan skill otak ")
+    print("kekurangan : ")
+    print("1. menaikan skill selain fisik dan lincah lebih lama")
+    print("=========================================")
+    inputs = input("masukkan pilihan roles anda : ")
+    if inputs == "1":
+        strength = 900
+        return roles3()
+    elif inputs == "2":
+        agility = 300
+        return roles3()
+    elif inputs == "3":
+        intelligence = 600
+        return roles3()
+
+def roles3():
+    global strength
+    global agility
+    global intelligence
+    print("pilih roles ketiga anda")
+    print("1. strength")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. Tubuh yang kuat")
+    print("2. menaikan skill fisik lebih cepat")
+    print("kekurangan : ")
+    print("1. menaikan skill selain fisik lebih lama")
+    print("=========================================")
+    print("2. agility")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. Tubuh yang lincah")
+    print("2. menaikan skill lincah lebih cepat")
+    print("kekurangan : ")
+    print("1. menaikan skill selain lincah lebih lama")
+    print("=========================================")
+    print("3. intelligence")
+    print("=========================================")
+    print("keuntungan : ")
+    print("1. punya otak yang pintar")
+    print("2. menaikan skill otak ")
+    print("kekurangan : ")
+    print("1. menaikan skill selain fisik dan lincah lebih lama")
+    print("=========================================")
+    inputs = input("masukkan pilihan roles anda : ")
+    if inputs == "1":
+        strength = 900
+        return karakter()
+    elif inputs == "2":
+        agility = 300
+        return karakter()
+    elif inputs == "3":
+        intelligence = 600
+        return karakter()
+
+def karakter():
+    print("pilih tipe karakter yang anda minatin : ")
+    print("1. strangth")
+    print("2. agility")
+    print("3. intelgenent")
+    inputs = input("masukkan pilihan karakter anda : ")
+    if inputs == "1":
+        return kekuatan()
+    elif inputs == "2":
+        return kelincahan()
+    elif inputs == "3":
+        return kecerdasan()
+
+def kekuatan():
+    print("pilih karakter agility anda")
+    print("1. gangster")
+    print("2. bodyguards")
+    print("3. coach")
+    print("4. polisi")
+    inputs = input("masukkan karater yang anda minatin : ")
+    if inputs == "1":
+        return loading1()
+    elif inputs == "2":
+        return loading1()
+    elif inputs == "3":
+        return loading1()
+    elif inputs == "4":
+        return loading1()
+    else:
+        print("salah input")
+        kekuatan()
+
+def kelincahan():
+    print("pilih karakter strangth anda")
+    print("1. Thief ( pencuri )")
+    print("2. Assasin")
+    print("3. Hidden Bodyguards")
+    inputs = input("masukkan karater yang anda minatin : ")
+    if inputs == "1":
+        return loading2()
+    elif inputs == "2":
+        return loading2()
+    elif inputs == "3":
+        return loading2()
+    else:
+        print("salah input")
+        kelincahan()
+
+def kecerdasan():
+    print("pilih karakter intelegenet anda")
+    print("1. IT")
+    print("2. Hacker")
+    print("3. Pilisi ( intelligence Departement )")
+    inputs = input("masukkan karater yang anda minatin : ")
+    if inputs == "1":
+        return loading3()
+    elif inputs == "2":
+        return loading3()
+    elif inputs == "3":
+        return loading3()
+    else:
+        print("salah input")
+        kecerdasan()
+
+def loading1():
     print("sabar")
     print("loading ...")
     time.sleep(0.5)
     print('versi : '+version)
     time.sleep(1)
     print("game sudah di stabilkan " + str(playername)+'')
-    return introduction()
+    return introduction1()
 
-def roles1():
+def loading2():
+    print("sabar")
+    print("loading ...")
+    time.sleep(0.5)
+    print('versi : '+version)
+    time.sleep(1)
+    print("game sudah di stabilkan " + str(playername)+'')
+    return introduction2()
+
+def loading3():
+    print("sabar")
+    print("loading ...")
+    time.sleep(0.5)
+    print('versi : '+version)
+    time.sleep(1)
+    print("game sudah di stabilkan " + str(playername)+'')
+    return introduction3()
+
+def status1():
+    global uang
     global strength
     global agility
-    global intelligent
-    print("1. strength")
-    print("2. agility")
-    print("3. intelligent")
-    pilihan = input("masukkan roles : ")
-    if pilihan == '1':
-        strength = 800
-        return roles2()
-    elif pilihan == '2':
-        agility = 200
-        return roles2()
-    elif pilihan == '3':
-        intelligent = 100
-        return roles2()
-
-def roles2():
-    global strength
-    global agility
-    global intelligent
-    print("1. strength")
-    print("2. agility")
-    print("3. intelligent")
-    pilihan = input("masukkan roles : ")
-    if pilihan == '1':
-        strength += 800
-        return roles3()
-    elif pilihan == '2':
-        agility += 200
-        return roles3()
-    elif pilihan == '3':
-        intelligent += 100
-        return roles3()
-
-def roles3():
-    global strength
-    global agility
-    global intelligent
-    print("1. strength")
-    print("2. agility")
-    print("3. intelligent")
-    pilihan = input("masukkan roles : ")
-    if pilihan == '1':
-        strength += 800
-        return loading()
-    elif pilihan == '2':
-        agility += 200
-        return loading()
-    elif pilihan == '3':
-        intelligent += 100
-        return loading()
-
-def ddatemonth():
-    global datemonth
-    if bulan == 1:
-        datemonth = 'januari'
-    elif bulan == 2:
-        datemonth = 'februari'
-    elif bulan == 3:
-        datemonth = 'maret'
-    elif bulan == 4:
-        datemonth = 'april'
-    elif bulan == 5:
-        datemonth = 'mei'
-    elif bulan == 6:
-        datemonth = 'juni'
-    elif bulan == 7:
-        datemonth = 'juli'
-    elif bulan == 8:
-        datemonth = 'agustus'
-    elif bulan == 9:
-        datemonth = 'september'
-    elif bulan == 10:
-        datemonth = 'oktober'
-    elif bulan == 11:
-        datemonth = 'november'
-    elif bulan == 12:
-        datemonth = 'desember'
-    return datemonth
-
-def next(min,max):
-    global hari
-    global bulan
-    global bulan_31
-    global random_hari
+    global intelligence
     global food
-    global health
-    global health_d1
-    global health_d2
-    global totalhari
-    global event_k
+    global food2
+    print('')
+    print('food : ',food)
+    print('uang : ',uang)
+    print('health : ', health)
+    print('stength : ',strength, '+',food2)
+    print('agility : ',agility)
+    print('intelligence : ',intelligence)
+    return mainmenu1()
 
-    random_hari = random.randint(min,max)
-    print("sudah ",random_hari,"hari berlangsung ")
-    hari_min = hari
-    cek_rata = hari + random_hari
+def status2():
+    global uang
+    global strength
+    global agility
+    global intelligence
+    print('')
+    print('food : ', food)
+    print('uang : ',uang)
+    print('health : ', health)
+    print('stength : ',strength)
+    print('agility : ',agility)
+    print('intelligence : ',intelligence)
+    return mainmenu2()
 
-    if event_k == 1:
-        a_number = random.randint(1,6)
-        a_health_num = random.randint(1,3)
-        random_hari2_food = random.randint(5,30)
-        random_hari2_hari = random.randint(1,10)
-        if a_number == 1:
-            print("pada waktu ini, kamu mencari mangsa")
-        if a_number == 2:
-            print("pada waktu ini, kamu sakit")
-            health -= 1
-        if a_number == 3:
-            print("pada waktu ini, kamu di begal")
-            food -=35
-            print("kehilangan 35 kg berat badan")
-        if a_number == 4:
-            print("pada waktu ini, partner mu menghianat")
-            totalhari += random_hari2_hari
-            hari += random_hari2_hari
-            print("makan waktu " + str(random_hari2_hari) + " hari buat meorginisir barang")
-        if a_number == 5:
-            print("pada waktu ini, kamu kena busur")
-            health -=4
-        if a_number == 6:
-            print("pada waktu ini, jalan lagi di perbaiki, kamu terpaksa mutar lewat jalan lain")
-            totalhari += random_hari2_hari
-            hari += random_hari2_hari
-            food -= random_hari2_food
-            print("karena itu, kamu makan "+str(random_hari2_food)+" kg")
-            print("makan waktu "+str(random_hari2_hari)+" hari buat istirahat")
-        if a_health_num == 1:
-            print("dan juga kehilangan 1 health")
-            health -= 1
-        food = food - random_hari2_food - random_hari2_hari*5
-        hari += random_hari2_hari
-        totalhari += random_hari2_hari
+def status3():
+    global uang
+    global strength
+    global agility
+    global intelligence
+    print('')
+    print('food : ', food)
+    print('uang : ',uang)
+    print('health : ', health)
+    print('stength : ',strength)
+    print('agility : ',agility)
+    print('intelligence : ',intelligence)
+    return mainmenu3()
 
-    cek_rata = hari + random_hari
-    if health_d1 >= hari_min and health_d1 <= cek_rata:
-        health -= 1
-        print("kamu kehilangan 1 health")
-    if health_d2 >= hari_min and health_d2 <= cek_rata:
-        health -= 1
-        print("kamu kehilangan 1 health")
+def memalak():
+    global strength
+    global agility
+    global intelligence
+    global uang
+    print("menu untuk gangstar")
+    print("1. uang sekolah anak-anak")
+    print("2. uang pasar")
+    print("3. uang judi")
+    print("4. hasil jual narkoba")
+    inputs = input("masukkan skill yang mau di asah : ")
+    if inputs == "1":
+        uang += 10000
+        strength += 200
+        agility += 50
+        intelligence += 0
+        return mainmenu1()
+    elif inputs == "2":
+        uang += 50000
+        strength += 400
+        agility += 100
+        intelligence += 50
+        return mainmenu1()
+    elif inputs == "3":
+        uang += 100000
+        strength += 600
+        agility += 150
+        intelligence += 200
+        return mainmenu1()
+    elif inputs == "4":
+        strength += 800
+        agility += 250
+        intelligence += 300
+        return narkoba()
 
-    hari += random_hari
-    totalhari += random_hari
-    food = random_hari * 5
+def narkoba():
+    global uang
+    print("narkoba yang mau di jual")
+    print("1. ganja")
+    print("2. sabu")
+    print("3. morfin")
+    print("4. heroin ( putaw )")
+    inputs = input("masukkan barang yang mana mau di jual : ")
+    if inputs == "1":
+        uang += 10000
+        return mainmenu1()
+    elif inputs == "2":
+        uang += 20000
+        return mainmenu1()
+    elif inputs == "3":
+        uang += 30000
+        return mainmenu1()
+    elif inputs == "4":
+        uang += 40000
+        return mainmenu1()
 
-    if hari >= 30:
-        if bulan not in bulan_31:
-            if hari > 30 :
-                hari -= 30
-                bulan += 1
-                health_d1 = random.randint(1,30)
-                health_d2 = random.randint(1,30)
-                event_k = random.randint(1,3)
-            else:
-                if hari > 31 :
-                    hari -= 31
-                    bulan += 1
-                    health_d1 = random.randint(1,30)
-                    health_d2 = random.randint(1,30)
-                    event_k = random.randint(1,4)
+def merampok():
+    global strength
+    global agility
+    global intelligence
+    print("menu untuk maling")
+    print("1. maling sendal")
+    print("2. maling tv")
+    print("3. maling motor")
+    print("4. maling AC")
+    inputs = input("masukkan skill yang mau di asah : ")
+    if inputs == "1":
+        strength += 0
+        agility += 100
+        intelligence += 50
+        return mainmenu2()
+    elif inputs == "2":
+        strength += 50
+        agility += 150
+        intelligence += 100
+        return mainmenu2()
+    elif inputs == "3":
+        strength += 100
+        agility += 250
+        intelligence += 150
+        return mainmenu2()
+    elif inputs == "4":
+        strength += 150
+        agility += 300
+        intelligence += 200
+        return mainmenu2()
 
+def hacker():
+    global strength
+    global agility
+    global intelligence
+    print("menu untuk hacker")
+    print("1. hack wifi")
+    print("2. hack hp")
+    print("3. nyuri data base KTP")
+    print("4. hack atm")
+    inputs = input("masukkan skill yang mau di asah : ")
+    if inputs == "1":
+        strength += 0
+        agility += 50
+        intelligence += 100
+        return mainmenu3()
+    elif inputs == "2":
+        strength += 0
+        agility += 100
+        intelligence += 150
+        return mainmenu3()
+    elif inputs == "3":
+        strength += 0
+        agility += 150
+        intelligence += 200
+        return mainmenu3()
+    elif inputs == "4":
+        strength += 100
+        agility += 200
+        intelligence += 300
+        return mainmenu3()
 
-def jalan(jarakjalan):
-    global hari
-    global jalan_total
-    next(4,7)
-    jarakjalan = jarakjalan + random.randint(40,80)
-    jalan_total += 1
-    return jarakjalan
-
-def istirahat(health):
-    global hari
-    global istrahat_total
-    next(2,50)
-    health = maxhealth
-    istrahat_total += 10
-    return health
-
-def status():
-    global status_total
-    print('makanan : ',food,"kg")
-    print('health : ',health)
-    print('jarak jalan : ',jarakgerakplayer)
-    print('status', str(roles1) , str(roles2), str(roles3))
-    distance_left = jarak - jarakgerakplayer
-    print(''+str(hari)+ " hari telah berlangsung")
-    print('kamu sudah berjalan '+str(jarakgerakplayer)+" KM, masih ada "+str(distance_left)+" KM lagi")
-    status_total += 1
-    return mainmenu()
-
-def berburu(berburu_food):
-    global hari
-    global berburu_total
+def makanan1():
+    global uang
     global food
-    next(2,30)
-    berburu_food = food + random.randint(1,600)
-    print('bertambah : '+str(berburu_food)+' kg makanan')
-    berburu_total += 1
-    return berburu_food
+    global food2
+    global strength
+    print("beli makan apa :")
+    print("1. pizza hut")
+    print("2. burger king")
+    print("3. coca cola")
+    print("4. AW sarsafalila")
+    inputs = input("masukkan pilihan : ")
+    if inputs == "1":
+        food2 += 50
+        uang -= 70000
+        if uang <= 0:
+            print("Challange gagal\n")
+            return
+        return mainmenu1()
+    elif inputs == "2":
+        food2 += 30
+        uang -= 50000
+        if uang <= 0:
+            print("Challange gagal\n")
+            return
+        return mainmenu1()
+    elif inputs == "3":
+        food2 += 10
+        uang -= 6000
+        if uang <= 0:
+            print("Challange gagal\n")
+            return
+        return mainmenu1()
+    elif inputs == "4":
+        food2 += 20
+        uang -= 12000
+        if uang <= 0:
+            print("Challange gagal\n")
+            return
+        return mainmenu1()
 
 
-
-def introduction():
+def introduction1():
     print("selamat datang player")
     time.sleep(1.5)
-    print("kamu adalah seorang berbakat dan pandai melakukan segala hal seperti bertarung dan lain-lain")
+    print("tahun  terjadi perang saudara")
     time.sleep(1.5)
-    print("tetapi kamu ini adalah orang paling polos dan mudah di tipu")
+    print("terjadinya ini karena perebutan daerah")
     time.sleep(1.5)
-    print("pada suatu hari kamu bertemu sama teman-teman kamu. dan teman mu menyuruh mu untuk melakukan bisnis ilegal")
+    print("banyak sekali korban yang terkena terdampak perang")
     time.sleep(1.5)
-    print("dan kamu langsung setuju-setuju aja tapi kamu ngak tau bisnis apa dan belum di kasih bukti oleh teman-teman kamu")
+    print("salah satu negara yang dekat terjadinya perang ini tidak terkena dampak nya")
     time.sleep(1.5)
-    print("teman kamu menyuruh kamu pergi kemalang untuk melakukan bisnis ilegal ini dan diberi uang tiket")
+    print("dampak perang ini mengakibatkan kurangnya makanan dan minuman")
     time.sleep(1.5)
-    print("teman kamu menyuruh kamu datang harus tanggal 31 desember")
+    print("membuat masyarakat harus pindah daerah yang lebih baik")
     time.sleep(1.5)
-    print("dan kamu mikir jarak dari tarakan ke malang itu ("+str(jarak)+"km) tapi karena sudah di beri uang saku sama tiket keluar kota siapa yang nolak")
+    print("kalimantan adalah kota yang paling aman untuk di tempatin oleh masyarakat")
     time.sleep(1.5)
-    print("btw ini mah bukan polos lagi sih Charakter nya melainkan tulul aowkawokawokawok")
+    print("kita akan ke kalimantan, yang dimana kota awalnya berada di " )
     time.sleep(1.5)
-    print("")
-    print("1. cari kos")
-    print("2. istirahat")
-    print("3. memalak")
-    print("4. cek status")
-    print("5. cek diri")
+    print("jarak ke kalimantan ( km ) kamu harus sampai 31 desember")
+    time.sleep(1.5)
+    print("karena makanan dan minuman semakin tipis dan akan ada perang selanjutnya")
+    time.sleep(1.5)
+    print("tetapi jalan tidak selalu mulus")
+    time.sleep(1.5)
+    print("setiap hari kamu bisa kehilangan makanan dan darah. kamu bisa berburu dan istirahat")
+    time.sleep(1.5)
+    print("=====================================================================================")
+    rules()
+    time.sleep(5.0)
+    return mainmenu1()
+
+def introduction2():
+    print("selamat datang player")
+    time.sleep(1.5)
+    print("tahun terjadi perang saudara")
+    time.sleep(1.5)
+    print("terjadinya ini karena perebutan daerah")
+    time.sleep(1.5)
+    print("banyak sekali korban yang terkena terdampak perang")
+    time.sleep(1.5)
+    print("salah satu negara yang dekat terjadinya perang ini tidak terkena dampak nya")
+    time.sleep(1.5)
+    print("dampak perang ini mengakibatkan kurangnya makanan dan minuman")
+    time.sleep(1.5)
+    print("membuat masyarakat harus pindah daerah yang lebih baik")
+    time.sleep(1.5)
+    print("kalimantan adalah kota yang paling aman untuk di tempatin oleh masyarakat")
+    time.sleep(1.5)
+    print("kita akan ke kalimantan, yang dimana kota awalnya berada di ")
+    time.sleep(1.5)
+    print("jarak ke kalimantan ( km ) kamu harus sampai 31 desember")
+    time.sleep(1.5)
+    print("karena makanan dan minuman semakin tipis dan akan ada perang selanjutnya")
+    time.sleep(1.5)
+    print("tetapi jalan tidak selalu mulus")
+    time.sleep(1.5)
+    print("setiap hari kamu bisa kehilangan makanan dan darah. kamu bisa berburu dan istirahat")
+    time.sleep(1.5)
+    print("=====================================================================================")
+    rules()
+    time.sleep(5.0)
+    return mainmenu2()
+
+def introduction3():
+    print("selamat datang player")
+    time.sleep(1.5)
+    print("tahun terjadi perang saudara")
+    time.sleep(1.5)
+    print("terjadinya ini karena perebutan daerah")
+    time.sleep(1.5)
+    print("banyak sekali korban yang terkena terdampak perang")
+    time.sleep(1.5)
+    print("salah satu negara yang dekat terjadinya perang ini tidak terkena dampak nya")
+    time.sleep(1.5)
+    print("dampak perang ini mengakibatkan kurangnya makanan dan minuman")
+    time.sleep(1.5)
+    print("membuat masyarakat harus pindah daerah yang lebih baik")
+    time.sleep(1.5)
+    print("kalimantan adalah kota yang paling aman untuk di tempatin oleh masyarakat")
+    time.sleep(1.5)
+    print("kita akan ke kalimantan, yang dimana kota awalnya berada di ")
+    time.sleep(1.5)
+    print("jarak ke kalimantan ( km ) kamu harus sampai 31 desember")
+    time.sleep(1.5)
+    print("karena makanan dan minuman semakin tipis dan akan ada perang selanjutnya")
+    time.sleep(1.5)
+    print("tetapi jalan tidak selalu mulus")
+    time.sleep(1.5)
+    print("setiap hari kamu bisa kehilangan makanan dan darah. kamu bisa berburu dan istirahat")
+    time.sleep(1.5)
+    print("=====================================================================================")
+    rules()
+    time.sleep(5.0)
+    return mainmenu3()
+
+def rules():
+    print("rules game")
+    print("1. Bila Uang Yang Dimiliki Kurang Dari 0 Maka Anda Kalah")
+    print("2. Cerita Akan Ditentukan Setelah Memilih Roles(Penting!!)")
+    print("3. Setiap Hari Karakter Akan Kehilang Stat Food, Dan Ketika Food Jatuh Ke 0 Maka Cerita Akan Gagal")
+    print("wajib di baca !!!")
+
+def mainmenu1():
+    global food
+    global uang
+    print("1. memalak")
+    print("2. bisa masuk join gangstar")
+    print("3. menguasai daerah")
+    print("4. beli makanan")
+    print("5. melihat hasil sumber haram")
+    print("6. ngecek status")
+    print("7. keluar")
+    print("8. tentang game")
+    print('versi :' + version)
+    inputs = input("masukkan pilihan : ")
+    if inputs == "1":
+        memalak()
+    elif inputs == "2":
+        return 0
+    elif inputs == "3":
+        return 0
+    elif inputs == "4":
+        makanan1()
+    elif inputs == "5":
+        print("uang saat ini",uang)
+        if uang <= 0:
+            print("Challange gagal\n")
+            return
+        return mainmenu1()
+    elif inputs == "6":
+        status1()
+    elif inputs == "7":
+        quit()
+    elif inputs == "8":
+        print("tentang game : ")
+        time.sleep(1.5)
+        print("nama game : indo pride")
+        time.sleep(2.0)
+        print('versi : ' + version)
+        time.sleep(1.5)
+        print('Nama Pembuat 1 : Muhammad Daffa Atthariq')
+        time.sleep(1.5)
+        print('NIM Pembuat 1 : 201910370311132')
+        time.sleep(1.5)
+        print('Ketua pembuat game sekaligus membuat cerita')
+        time.sleep(1.5)
+        print('Nama Pembuat 2 : Nur Syahfei')
+        time.sleep(1.5)
+        print('NIM Pembuat 2 : 201910370311109')
+        time.sleep(1.5)
+        print('Anggota membuat fitur')
+        time.sleep(1.5)
+        print('Nama Pembuat 3 : Rizky Ari Fauzi Hidayat')
+        time.sleep(1.5)
+        print('NIM Pembuat 3 : 2019103703111069')
+        time.sleep(1.5)
+        print('Anggota membuat laporan')
+        time.sleep(1.5)
+        print('Nama Pembuat 4 : Akbar Nur Habibi')
+        time.sleep(1.5)
+        print('NIM Pembuat 4 : 201910370311146')
+        time.sleep(1.5)
+        print('Anggota membuat cerita')
+        time.sleep(1.5)
+        pilihan = input("apakah anda mau main (Y,N) : ")
+        if pilihan == "y":
+            menupertama()
+        if pilihan == "n":
+            quit()
+        else:
+            print("salah input")
+            return mainmenu1()
+
+def mainmenu2():
+    global food
+    global uang
+    print("1. merampok rumah orang")
+    print("2. daerah yang mau di rampok")
+    print("3. beli makanan")
+    print("4. hasil curian")
+    print("5. ngecek status")
     print("6. keluar")
     print("7. tentang game")
     print('versi :' + version)
-    return mainmenu()
-
-def mainmenu():
-    global jarakgerakplayer
-    global food
-    global health
-
-    while jarakgerakplayer < jarak and food > 0 and health > 0 and bulan < 13:
-        ddatemonth()
-        if food <= 10:
-            print("hati-hati kamu hanya" +str(food)+ "kg makan")
-            print("kamu harus memalak")
-        if health <= 1:
-            print("hati-hati kamu hanya"+str(health)+"health sekarang")
-            print("kamu harus istirahat")
-        print(str(playername)+" sekarang "+datemonth+' '+str(hari)+' '+str(tahun)+ " dan kamu berjalan "+str(jarakgerakplayer))
-        pilihan = input("masukkan pilihan : ")
-        if pilihan == '1':
-            jarakgerakplayer = jalan(jarakgerakplayer)
-        elif pilihan == '2':
-            if health < maxhealth:
-                print("kamu mendapat kan 1 health")
-                health = istirahat(maxhealth)
-            if health >= maxhealth:
-                print("health kamu penuh, maximum health mu " + str(maxhealth)+ " !")
-        elif pilihan == '3':
-            food = berburu(food)
-        elif pilihan == '4':
-            status()
-        elif pilihan == '5':
-            print('1, jalan : 40-80 km dan menghabiskan waktu 4-7 hari')
-            print('2. istirahat : menambah health 1-5 dan menghabiskan waktu 2-5 hari')
-            print('3. memalak : menambah 100 kg makanan menghabiskan 2-5 hari')
-            print('4. status : list makanan, health, jarak jalan, and hari')
-            print('5. bantuan : list pilihan')
-            print('6. keluar : keluar game')
-            print('7. tentang : deskripsi game')
-        elif pilihan == '6':
-            quit_pilihan = input("apakah kamu yakin keluar? (Y,N) : ")
-            if quit_pilihan == 'y':
-                print('selamat tidur')
-                break
-        elif pilihan == 'bunuhdiri':
-            quit_pilihan2 = input("yakin lu bunuh diri gara gara ke polosan mu (Y,N) : ")
-            if quit_pilihan2 == 'y':
-                print("game over")
-                break
-        elif pilihan == '7':
-            print("tentang game : ")
-            time.sleep(0.1)
-            print("nama game : tawuran")
-            time.sleep(0.5)
-            print('versi : '+version)
-            time.sleep(0.1)
-            print('nama pembuat 1 : Muhammad Daffa Atthariq')
-            time.sleep(0.1)
-            print('nama pembuat 2 : nur syahfei')
-            time.sleep(0.1)
-            print('nama pembuat 3 : rizky fauzi')
-            time.sleep(0.1)
-            print('nama pembuat 4 : akbar nur habibi')
+    inputs = input("masukkan pilihan : ")
+    if inputs == "1":
+        merampok()
+    elif inputs == "2":
+        return 0
+    elif inputs == "3":
+        return 0
+    elif inputs == "4":
+        print("uang saat ini", uang)
+        return mainmenu2()
+    elif inputs == "5":
+        status2()
+    elif inputs == "6":
+        quit()
+    elif inputs == "7":
+        print("tentang game : ")
+        time.sleep(1.5)
+        print("nama game : indo pride")
+        time.sleep(2.0)
+        print('versi : ' + version)
+        time.sleep(1.5)
+        print('Nama Pembuat 1 : Muhammad Daffa Atthariq')
+        time.sleep(1.5)
+        print('NIM Pembuat 1 : 201910370311132')
+        time.sleep(1.5)
+        print('Ketua pembuat game sekaligus membuat cerita')
+        time.sleep(1.5)
+        print('Nama Pembuat 2 : Nur Syahfei')
+        time.sleep(1.5)
+        print('NIM Pembuat 2 : 201910370311109')
+        time.sleep(1.5)
+        print('Anggota membuat fitur')
+        time.sleep(1.5)
+        print('Nama Pembuat 3 : Rizky Ari Fauzi Hidayat')
+        time.sleep(1.5)
+        print('NIM Pembuat 3 : 2019103703111069')
+        time.sleep(1.5)
+        print('Anggota membuat laporan')
+        time.sleep(1.5)
+        print('Nama Pembuat 4 : Akbar Nur Habibi')
+        time.sleep(1.5)
+        print('NIM Pembuat 4 : 201910370311146')
+        time.sleep(1.5)
+        print('Anggota membuat cerita')
+        time.sleep(1.5)
+        pilihan = input("apakah anda mau main (Y,N) : ")
+        if pilihan == "y":
+            menupertama()
+        if pilihan == "n":
+            quit()
         else:
             print("salah input")
-
-    if jarakgerakplayer >= jarak:
-        print("selamat baru sampai di malang ")
-        print("jalan "+str(jalan_total)+" kali")
-        print("istirahat "+str(istrahat_total)+" kali")
-        print("memalak "+str(berburu_total)+" kali")
-        print("mengecek status "+str(status_total)+" kali")
-
+            return mainmenu2()
+def mainmenu3():
+    global food
+    global uang
+    print("1. mengasah skill hacker")
+    print("2. memilih daerah yang mau di serang")
+    print("3. beli makanan")
+    print("4. mengambil hasil hacker")
+    print("5. ngecek status")
+    print("6. keluar")
+    print("7. tentang game")
+    print('versi :' + version)
+    inputs = input("masukkan pilihan : ")
+    if inputs == "1":
+        hacker()
+    elif inputs == "2":
+        return 0
+    elif inputs == "3":
+        return 0
+    elif inputs == "4":
+        print("uang saat ini", uang)
+        return mainmenu3()
+    elif inputs == "5":
+        status3()
+    elif inputs == "6":
+        quit()
+    elif inputs == "7":
+        print("tentang game : ")
+        time.sleep(1.5)
+        print("nama game : indo pride")
+        time.sleep(2.0)
+        print('versi : ' + version)
+        time.sleep(1.5)
+        print('Nama Pembuat 1 : Muhammad Daffa Atthariq')
+        time.sleep(1.5)
+        print('NIM Pembuat 1 : 201910370311132')
+        time.sleep(1.5)
+        print('Ketua pembuat game sekaligus membuat cerita')
+        time.sleep(1.5)
+        print('Nama Pembuat 2 : Nur Syahfei')
+        time.sleep(1.5)
+        print('NIM Pembuat 2 : 201910370311109')
+        time.sleep(1.5)
+        print('Anggota membuat fitur')
+        time.sleep(1.5)
+        print('Nama Pembuat 3 : Rizky Ari Fauzi Hidayat')
+        time.sleep(1.5)
+        print('NIM Pembuat 3 : 2019103703111069')
+        time.sleep(1.5)
+        print('Anggota membuat laporan')
+        time.sleep(1.5)
+        print('Nama Pembuat 4 : Akbar Nur Habibi')
+        time.sleep(1.5)
+        print('NIM Pembuat 4 : 201910370311146')
+        time.sleep(1.5)
+        print('Anggota membuat cerita')
+        time.sleep(1.5)
         pilihan = input("apakah anda mau main (Y,N) : ")
         if pilihan == "y":
-            start()
+            menupertama()
         if pilihan == "n":
-            start()
-
-    if food <= 0:
-        print("di game kamu ")
-        print("selamat baru sampai di malang ")
-        print("jalan "+str(jalan_total)+" kali")
-        print("istirahat "+str(istrahat_total)+" kali")
-        print("memalak "+str(berburu_total)+" kali")
-        print("mengecek status "+str(status_total)+" kali")
-
-        pilihan = input("apakah anda mau main (Y,N) : ")
-        if pilihan == "y":
-            start()
-        if pilihan == "n":
-            start()
-
-    if health <= 0:
-        print("game over darah kamu habis")
-
-        print("di game kamu")
-        print("jalan "+str(jalan_total)+" kali")
-        print("istirahat "+str(istrahat_total)+" kali")
-        print("memalak "+str(berburu_total)+" kali")
-        print("mengecek status "+str(status_total)+" kali")
-
-        pilihan = input("apakah anda mau main (Y,N) : ")
-        if pilihan == "y":
-            start()
-        if pilihan == "n":
-            start()
-
-    if bulan >= 13:
-        print("game over darah kamu habis")
-
-        print("selamat baru sampai di malang")
-        print("jalan "+str(jalan_total)+" kali")
-        print("istirahat "+str(istrahat_total)+" kali")
-        print("memalak "+str(berburu_total)+" kali")
-        print("mengecek status "+str(status_total)+" kali")
-
-        pilihan = input("apakah anda mau main (Y,N) : ")
-        if pilihan == "y":
-            start()
-        if pilihan == "n":
-            start()
+            quit()
+        else:
+            print("salah input")
+            return mainmenu3()
 
 
 def start():
-    os.system("cls")
-    print("selamat datang")
-    return tplayer()
+    print("selamat datang di game indo pride")
+    return menupertama()
 
 start()
