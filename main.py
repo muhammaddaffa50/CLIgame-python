@@ -1,5 +1,5 @@
 import time
-import random
+# import random
 
 # deklarasi
 version = '0.0.1'
