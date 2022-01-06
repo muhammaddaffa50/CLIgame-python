@@ -1,7 +1,10 @@
 import time
+
 # import random
 
 # deklarasi
+from random import randint
+
 version = '0.0.1'
 # playername = ''
 # password = ''
@@ -55,7 +58,21 @@ def menupertama():
 
 
 def cariUser(user, cari):
-    print(list(map(lambda x: x if x[0] == cari else "", user)))
+    # list(map(lambda x: x if x[0] == cari else "", user))
+
+    mapsUser = map(lambda x: x if x[0] == cari else "", user)
+
+    #objec map adalah lazy evaluasi karena,
+    #else if baru dijalkan saat dibuthkan, objecs maps masih blm menjelakan isi-nya(tidak mengetahui hasil)
+
+    isFound = False
+    for item in mapsUser:
+        if item != "":
+            isFound = True
+            print(item[0])
+    if not isFound:
+        print("tidak ditemukan\n\n")
+    menupertama()
     return
 
 
@@ -71,15 +88,16 @@ def register(username, password):
 
 def login(username, password):
     global datalogin
-    while True:
-        for temp in datalogin:
-            if username == temp[0] and password == temp[1]:
-                print("\n\n" + "selamat datang pemain " + temp[0])
-                tingkatan()
-                break
+    isUserFound = False
+    for temp in datalogin:
+        if username == temp[0] and password == temp[1]:
+            print("\n\n" + "selamat datang pemain " + temp[0])
+            tingkatan()
+            isUserFound = True
+            break
+    if not isUserFound:
         print("salah akun. \n\n")
         menupertama()
-        break
 
 
 def tingkatan():
@@ -157,13 +175,12 @@ def roles1():
     inputs = input("masukkan pilihan roles anda : ")
     if inputs == "1":
         strength += 900
-        return roles2()
     elif inputs == "2":
         agility += 300
-        return roles2()
     elif inputs == "3":
         intelligence += 600
-        return roles2()
+    roles2()
+    return
 
 
 def roles2():
@@ -321,32 +338,61 @@ def memalak():
     print("3. uang judi")
     print("4. jual narkoba")
     inputs = input("masukkan skill yang mau di asah : ")
-    if inputs == "1":
-        health -= 3
-        uang += 10000
-        strength += 200
-        agility += 50
+
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        health -= 10
+        uang -= 10000
+        strength += 20
+        agility += 5
         intelligence += 0
         return mainmenu1()
-    elif inputs == "2":
-        health -= 4
-        uang += 50000
-        strength += 400
-        agility += 100
-        intelligence += 50
+    elif value <= 3:
+        print("")
+        health -= 20
+        uang -= 20000
+        strength += 20
+        agility += 5
+        intelligence += 0
         return mainmenu1()
-    elif inputs == "3":
-        health -= 5
-        uang += 100000
-        strength += 600
-        agility += 150
-        intelligence += 200
+    elif value <= 2:
+        print("")
+        health -= 30
+        uang -= 30000
+        strength += 20
+        agility += 5
+        intelligence += 0
         return mainmenu1()
-    elif inputs == "4":
-        strength += 800
-        agility += 250
-        intelligence += 300
-        return narkoba()
+
+    else:
+        if inputs == "1":
+            health -= 3
+            uang += 10000
+            strength += 200
+            agility += 50
+            intelligence += 0
+            return mainmenu1()
+        elif inputs == "2":
+            health -= 4
+            uang += 50000
+            strength += 400
+            agility += 100
+            intelligence += 50
+            return mainmenu1()
+        elif inputs == "3":
+            health -= 5
+            uang += 100000
+            strength += 600
+            agility += 150
+            intelligence += 200
+            return mainmenu1()
+        elif inputs == "4":
+            strength += 800
+            agility += 250
+            intelligence += 300
+            return narkoba()
 
 
 def narkoba():
@@ -358,22 +404,41 @@ def narkoba():
     print("3. morfin")
     print("4. heroin ( putaw )")
     inputs = input("masukkan pilihan anda : ")
-    if inputs == "1":
-        health -= 3
-        uang += 10000
+
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        health -= 10
+        uang -= 10000
         return mainmenu1()
-    elif inputs == "2":
-        health -= 4
-        uang += 20000
+    elif value <= 3:
+        print("")
+        health -= 20
+        uang -= 20000
         return mainmenu1()
-    elif inputs == "3":
-        health -= 5
-        uang += 30000
+    elif value <= 2:
+        print("")
+        health -= 30
+        uang -= 30000
         return mainmenu1()
-    elif inputs == "4":
-        health -= 6
-        uang += 40000
-        return mainmenu1()
+    else:
+        if inputs == "1":
+            health -= 3
+            uang += 10000
+            return mainmenu1()
+        elif inputs == "2":
+            health -= 4
+            uang += 20000
+            return mainmenu1()
+        elif inputs == "3":
+            health -= 5
+            uang += 30000
+            return mainmenu1()
+        elif inputs == "4":
+            health -= 6
+            uang += 40000
+            return mainmenu1()
 
 
 def merampok():
@@ -407,6 +472,7 @@ def merampok():
         intelligence += 200
         return maling()
 
+
 def maling():
     global health
     global uang
@@ -432,6 +498,7 @@ def maling():
         health -= 6
         uang += 40000
         return mainmenu2()
+
 
 def hacker():
     global strength
@@ -464,6 +531,7 @@ def hacker():
         intelligence += 300
         return atm()
 
+
 def atm():
     global health
     global uang
@@ -490,6 +558,7 @@ def atm():
         uang += 40000
         return mainmenu3()
 
+
 def daerahdikuasai():
     global health
     global uang
@@ -500,7 +569,7 @@ def daerahdikuasai():
     print("4. kuasain ijen")
     inputs = input("masukkan pilihan anda : ")
     if inputs == "1":
-        health-= 10
+        health -= 10
         print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
         uang += 10000
         print("uang yang di peroleh 10000")
@@ -524,6 +593,7 @@ def daerahdikuasai():
         print("uang yang di peroleh 20000")
         return mainmenu1()
 
+
 def daerahmaling():
     global health
     global uang
@@ -534,7 +604,7 @@ def daerahmaling():
     print("4. perumahan ijen")
     inputs = input("masukkan pilihan anda : ")
     if inputs == "1":
-        health-= 10
+        health -= 10
         print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah tirto utomo dan sempat di pukul")
         uang += 10000
         print("uang yang di peroleh 10000")
@@ -558,6 +628,7 @@ def daerahmaling():
         print("uang yang di peroleh 20000")
         return mainmenu2()
 
+
 def daerahhacker():
     global health
     global uang
@@ -568,7 +639,7 @@ def daerahhacker():
     print("4. serang cyber surabaya")
     inputs = input("masukkan pilihan anda : ")
     if inputs == "1":
-        health-= 10
+        health -= 10
         print("health kamu berkurang karena di kejar sama polisi")
         uang += 10000
         print("uang yang di peroleh 10000")
@@ -591,6 +662,7 @@ def daerahhacker():
         uang += 20000
         print("uang yang di peroleh 20000")
         return mainmenu3()
+
 
 def makanan1():
     global food
@@ -647,6 +719,7 @@ def makanan2():
         uang -= 12000
         return mainmenu2()
 
+
 def makanan3():
     global food
     global uang
@@ -673,6 +746,7 @@ def makanan3():
         food += 2
         uang -= 12000
         return mainmenu3()
+
 
 # def next(min, max):
 #     global hari
@@ -758,12 +832,18 @@ def makanan3():
 
 def rules(func):
     def warper():  # closur
-        func()  # high order
+        pilihan = func()  # high order
         print("rules game")
         print("1. Bila Uang Yang Dimiliki Kurang Dari 0 Maka Anda Kalah")
         print("2. Cerita Akan Ditentukan Setelah Memilih Roles (Penting!!)")
         print("3. Setiap Hari Karakter Akan Kehilang Stat Food, Dan Ketika Food Jatuh Ke 0 Maka Cerita Akan Gagal")
         print("wajib di baca !!!")
+        if pilihan == "1":
+            mainmenu1()
+        elif pilihan == "2":
+            mainmenu2()
+        elif pilihan == "3":
+            mainmenu3()
 
     return warper
 
@@ -783,7 +863,7 @@ def introduction1():
     time.sleep(1)
     print("game sudah di stabilkan ")
 
-    if inputs == 1:
+    if inputs == "1":
         print("selamat datang player ")
         time.sleep(1.5)
         print("Gangster Memfokuskan Kekuatan Kamu Ke Strength. Petarung Jarak Dekat Yang Akan Menghancurkan Lawannya Dengan Tubuhnya.")
@@ -792,7 +872,7 @@ def introduction1():
         time.sleep(1.5)
         print("=====================================================================================")
         time.sleep(5.0)
-    if inputs == 2:
+    if inputs == "2":
         print("selamat datang player")
         time.sleep(1.5)
         print("Pencuri Memfokuskan Kekuatan Kamu Ke Agility. Membuatmu Semakin Cepat Dan Lincah.")
@@ -801,7 +881,7 @@ def introduction1():
         time.sleep(1.5)
         print("=====================================================================================")
         time.sleep(5.0)
-    if inputs == 3:
+    if inputs == "3":
         print("selamat datang player")
         time.sleep(1.5)
         print("Hacker Memfokuskan Kemampuanmu Pada Intelligence. Membuatmu Ahli Dalam Perkomputeran.")
@@ -810,6 +890,7 @@ def introduction1():
         time.sleep(1.5)
         print("=====================================================================================")
         time.sleep(5.0)
+    return inputs
 
 
 def mainmenu1():
@@ -875,7 +956,7 @@ def mainmenu1():
                 print("salah input")
                 return mainmenu1()
 
-    if uang >= 200000:
+    if uang >= 110000:
         if uang <= 110000:
             print("apakah kamu mau balik ke kota asal kamu")
             print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
@@ -1049,6 +1130,7 @@ def mainmenu2():
     #     elif pilihan == "n":
     #         quit()
 
+
 def mainmenu3():
     global uang
     global food
@@ -1167,9 +1249,10 @@ def mainmenu3():
     #         quit()
 
 
-def start():
+def start():  # pure funcion
     print("selamat datang di game indo pride")
-    return menupertama()
+    return
 
 
 start()
+menupertama()
