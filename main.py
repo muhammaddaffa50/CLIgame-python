@@ -255,47 +255,7 @@ def roles3():
 
 
 def karakter():
-    print("pilih tipe karakter yang anda minatin : ")
-    print("1. strangth")
-    print("2. agility")
-    print("3. intelgenent")
-    inputs = input("masukkan pilihan karakter anda : ")
-    if inputs == "1":
-        return loading1()
-    elif inputs == "2":
-        return loading2()
-    elif inputs == "3":
-        return loading3()
-
-
-def loading1():
-    print("sabar")
-    print("loading ...")
-    time.sleep(0.5)
-    print('versi : ' + version)
-    time.sleep(1)
-    print("game sudah di stabilkan ")
-    return introduction1()
-
-
-def loading2():
-    print("sabar")
-    print("loading ...")
-    time.sleep(0.5)
-    print('versi : ' + version)
-    time.sleep(1)
-    print("game sudah di stabilkan ")
-    return introduction1()
-
-
-def loading3():
-    print("sabar")
-    print("loading ...")
-    time.sleep(0.5)
-    print('versi : ' + version)
-    time.sleep(1)
-    print("game sudah di stabilkan ")
-    return introduction1()
+    introduction1()
 
 
 def status1():
@@ -798,7 +758,7 @@ def makanan3():
 
 def rules(func):
     def warper():  # closur
-        func(2)  # high order
+        func()  # high order
         print("rules game")
         print("1. Bila Uang Yang Dimiliki Kurang Dari 0 Maka Anda Kalah")
         print("2. Cerita Akan Ditentukan Setelah Memilih Roles (Penting!!)")
@@ -809,8 +769,21 @@ def rules(func):
 
 
 @rules
-def introduction1(pilihan):
-    if pilihan == 1:
+def introduction1():
+    print("pilih tipe karakter yang anda minatin : ")
+    print("1. strangth")
+    print("2. agility")
+    print("3. intelgenent")
+    inputs = input("masukkan pilihan karakter anda : ")
+
+    print("sabar")
+    print("loading ...")
+    time.sleep(0.5)
+    print('versi : ' + version)
+    time.sleep(1)
+    print("game sudah di stabilkan ")
+
+    if inputs == 1:
         print("selamat datang player ")
         time.sleep(1.5)
         print("Gangster Memfokuskan Kekuatan Kamu Ke Strength. Petarung Jarak Dekat Yang Akan Menghancurkan Lawannya Dengan Tubuhnya.")
@@ -819,7 +792,7 @@ def introduction1(pilihan):
         time.sleep(1.5)
         print("=====================================================================================")
         time.sleep(5.0)
-    if pilihan == 2:
+    if inputs == 2:
         print("selamat datang player")
         time.sleep(1.5)
         print("Pencuri Memfokuskan Kekuatan Kamu Ke Agility. Membuatmu Semakin Cepat Dan Lincah.")
@@ -828,7 +801,7 @@ def introduction1(pilihan):
         time.sleep(1.5)
         print("=====================================================================================")
         time.sleep(5.0)
-    if pilihan == 3:
+    if inputs == 3:
         print("selamat datang player")
         time.sleep(1.5)
         print("Hacker Memfokuskan Kemampuanmu Pada Intelligence. Membuatmu Ahli Dalam Perkomputeran.")
