@@ -545,25 +545,25 @@ def daerahdikuasai():
         print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
         uang += 10000
         print("uang yang di peroleh 10000")
-        return mainmenu2()
+        return mainmenu1()
     elif inputs == "2":
         health -= 20
         print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
         uang += 13000
         print("uang yang di peroleh 13000")
-        return mainmenu2()
+        return mainmenu1()
     elif inputs == "3":
         health -= 25
         print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
         uang += 15000
         print("uang yang di peroleh 15000")
-        return mainmenu2()
+        return mainmenu1()
     elif inputs == "4":
         health -= 30
         print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
         uang += 20000
         print("uang yang di peroleh 20000")
-        return mainmenu2()
+        return mainmenu1()
 
 def daerahmaling():
     global health
@@ -1039,7 +1039,7 @@ def mainmenu2():
             if pilihan == "y":
                 quit()
             elif pilihan == "n":
-                return mainmenu1()
+                return mainmenu2()
         if uang <= 150000:
             print("apakah kamu mau balik ke kota asal kamu")
             print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
@@ -1047,7 +1047,7 @@ def mainmenu2():
             if pilihan == "y":
                 quit()
             elif pilihan == "n":
-                return mainmenu1()
+                return mainmenu2()
         if uang <= 180000:
             print("apakah kamu mau balik ke kota asal kamu")
             print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
@@ -1055,7 +1055,7 @@ def mainmenu2():
             if pilihan == "y":
                 quit()
             elif pilihan == "n":
-                return mainmenu1()
+                return mainmenu2()
         print("uang kamu sudah terlalu banyak kamu harus balik")
         time.sleep(1.5)
         print("kamu sudah balik ke kampung dengan terpaksa karena uang kamu terlalu banyak")
@@ -1156,7 +1156,7 @@ def mainmenu3():
             if pilihan == "y":
                 quit()
             elif pilihan == "n":
-                return mainmenu1()
+                return mainmenu3()
         if uang <= 150000:
             print("apakah kamu mau balik ke kota asal kamu")
             print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
@@ -1164,7 +1164,7 @@ def mainmenu3():
             if pilihan == "y":
                 quit()
             elif pilihan == "n":
-                return mainmenu1()
+                return mainmenu3()
         if uang <= 180000:
             print("apakah kamu mau balik ke kota asal kamu")
             print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
@@ -1172,7 +1172,7 @@ def mainmenu3():
             if pilihan == "y":
                 quit()
             elif pilihan == "n":
-                return mainmenu1()
+                return mainmenu3()
         print("uang kamu sudah terlalu banyak kamu harus balik")
         time.sleep(1.5)
         print("kamu sudah balik ke kampung dengan terpaksa karena uang kamu terlalu banyak")
