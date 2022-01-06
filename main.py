@@ -3,8 +3,8 @@ import time
 
 # deklarasi
 version = '0.0.1'
-playername = ''
-password = ''
+# playername = ''
+# password = ''
 food = 0
 uang = 0
 health = 0
@@ -12,7 +12,6 @@ maxhealth = 0
 strength = 0
 agility = 0
 intelligence = 0
-food2 = 0
 # random_hari = 0
 # tahun = 0
 # datemonth = 'januari'
@@ -275,7 +274,7 @@ def loading1():
     time.sleep(0.5)
     print('versi : ' + version)
     time.sleep(1)
-    print("game sudah di stabilkan " + str(playername) + '')
+    print("game sudah di stabilkan ")
     return introduction1()
 
 
@@ -285,7 +284,7 @@ def loading2():
     time.sleep(0.5)
     print('versi : ' + version)
     time.sleep(1)
-    print("game sudah di stabilkan " + str(playername) + '')
+    print("game sudah di stabilkan ")
     return introduction1()
 
 
@@ -295,7 +294,7 @@ def loading3():
     time.sleep(0.5)
     print('versi : ' + version)
     time.sleep(1)
-    print("game sudah di stabilkan " + str(playername) + '')
+    print("game sudah di stabilkan ")
     return introduction1()
 
 
@@ -844,7 +843,6 @@ def mainmenu1():
     global uang
     global food
     global health
-    # global bulan
     print("1. memalak")
     print("2. menguasai daerah")
     print("3. beli makanan")
@@ -903,15 +901,7 @@ def mainmenu1():
             else:
                 print("salah input")
                 return mainmenu1()
-    if food <= 0:
-        print("challenge gagal ")
-        print("kamu mati di malang : ")
-        pilihan = input("apakah anda mau main (Y,N) : ")
-        if pilihan == "y":
-            start()
-        elif pilihan == "n":
-            quit()
-
+    
     if uang >= 200000:
         if uang <= 110000:
             print("apakah kamu mau balik ke kota asal kamu")
