@@ -901,7 +901,7 @@ def mainmenu1():
             else:
                 print("salah input")
                 return mainmenu1()
-    
+
     if uang >= 200000:
         if uang <= 110000:
             print("apakah kamu mau balik ke kota asal kamu")
@@ -932,7 +932,7 @@ def mainmenu1():
         print("kamu sudah balik ke kampung dengan terpaksa karena uang kamu terlalu banyak")
         quit()
 
-    if uang <= 0:
+    if food <= 0:
         print("challenge gagal")
         pilihan = input("apa kah mau di ulangin : ")
         if pilihan == "y":
@@ -1051,7 +1051,7 @@ def mainmenu2():
         print("kamu sudah balik ke kampung dengan terpaksa karena uang kamu terlalu banyak")
         quit()
 
-    if uang <= 0:
+    if food <= 0:
         print("challenge gagal")
         pilihan = input("apa kah mau di ulangin : ")
         if pilihan == "y":
@@ -1168,7 +1168,7 @@ def mainmenu3():
         print("kamu sudah balik ke kampung dengan terpaksa karena uang kamu terlalu banyak")
         quit()
 
-    if uang <= 0:
+    if food <= 0:
         print("challenge gagal")
         pilihan = input("apa kah mau di ulangin : ")
         if pilihan == "y":
