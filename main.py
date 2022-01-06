@@ -13,14 +13,14 @@ strength = 0
 agility = 0
 intelligence = 0
 food2 = 0
-random_hari = 0
-tahun = 0
-datemonth = 'januari'
-bulan = 1
-hari = 1
-totalhari = 0
-bulan_31 = [1, 3, 5, 7, 8, 10, 12]
-event_k = random.randint(1, 3)
+# random_hari = 0
+# tahun = 0
+# datemonth = 'januari'
+# bulan = 1
+# hari = 1
+# totalhari = 0
+# bulan_31 = [1, 3, 5, 7, 8, 10, 12]
+# event_k = random.randint(1, 3)
 datalogin = [["daffa", "123"], ["syahfei", "123"], ["fauzi", "123"], ["akbar", "123"]]
 
 
@@ -305,7 +305,6 @@ def status1():
     global agility
     global intelligence
     global food
-    global food2
     print('')
     print('food : ', food)
     print('uang : ', uang)
@@ -322,6 +321,7 @@ def status2():
     global strength
     global agility
     global intelligence
+    global food
     print('')
     print('food : ', food)
     print('uang : ', uang)
@@ -338,6 +338,7 @@ def status3():
     global strength
     global agility
     global intelligence
+    global food
     print('')
     print('food : ', food)
     print('uang : ', uang)
@@ -359,7 +360,7 @@ def memalak():
     print("1. uang sekolah SMA")
     print("2. uang pasar")
     print("3. uang judi")
-    print("4. hasil jual narkoba")
+    print("4. jual narkoba")
     inputs = input("masukkan skill yang mau di asah : ")
     if inputs == "1":
         health -= 3
@@ -397,7 +398,7 @@ def narkoba():
     print("2. sabu")
     print("3. morfin")
     print("4. heroin ( putaw )")
-    inputs = input("masukkan barang yang mana mau di jual : ")
+    inputs = input("masukkan pilihan anda : ")
     if inputs == "1":
         health -= 3
         uang += 10000
@@ -420,11 +421,11 @@ def merampok():
     global strength
     global agility
     global intelligence
-    print("menu untuk maling")
+    print("menu untuk mau di curi")
     print("1. maling sendal")
     print("2. maling tv")
     print("3. maling motor")
-    print("4. maling AC")
+    print("4. maling yang lain")
     inputs = input("masukkan skill yang mau di asah : ")
     if inputs == "1":
         strength += 0
@@ -445,8 +446,91 @@ def merampok():
         strength += 150
         agility += 300
         intelligence += 200
+        return maling()
+
+def maling():
+    global health
+    global uang
+    print("barang yang mau di maling")
+    print("1. Maling rice cooker")
+    print("2. Maling sepatu")
+    print("3. Maling helm")
+    print("4. Maling AC")
+    inputs = input("masukkan pilihan anda : ")
+    if inputs == "1":
+        health -= 3
+        uang += 10000
         return mainmenu2()
-    
+    elif inputs == "2":
+        health -= 4
+        uang += 20000
+        return mainmenu2()
+    elif inputs == "3":
+        health -= 5
+        uang += 30000
+        return mainmenu2()
+    elif inputs == "4":
+        health -= 6
+        uang += 40000
+        return mainmenu2()
+
+def hacker():
+    global strength
+    global agility
+    global intelligence
+    print("menu untuk hacker")
+    print("1. hack wifi")
+    print("2. hack hp")
+    print("3. nyuri data base KTP")
+    print("4. hack atm")
+    inputs = input("masukkan skill yang mau di asah : ")
+    if inputs == "1":
+        strength += 0
+        agility += 50
+        intelligence += 100
+        return mainmenu3()
+    elif inputs == "2":
+        strength += 0
+        agility += 100
+        intelligence += 150
+        return mainmenu3()
+    elif inputs == "3":
+        strength += 0
+        agility += 150
+        intelligence += 200
+        return mainmenu3()
+    elif inputs == "4":
+        strength += 100
+        agility += 200
+        intelligence += 300
+        return atm()
+
+def atm():
+    global health
+    global uang
+    print("atm yang mau di serang")
+    print("1. atm BRI")
+    print("2. atm BNI")
+    print("3. atm BCA")
+    print("4. atm Mandiri")
+    inputs = input("masukkan pilihan anda : ")
+    if inputs == "1":
+        health -= 3
+        uang += 10000
+        return mainmenu3()
+    elif inputs == "2":
+        health -= 4
+        uang += 20000
+        return mainmenu3()
+    elif inputs == "3":
+        health -= 5
+        uang += 30000
+        return mainmenu3()
+    elif inputs == "4":
+        health -= 6
+        uang += 40000
+        return mainmenu3()
+
 def daerahdikuasai():
     global health
     global uang
@@ -549,38 +633,6 @@ def daerahhacker():
         print("uang yang di peroleh 20000")
         return mainmenu3()
 
-def hacker():
-    global strength
-    global agility
-    global intelligence
-    print("menu untuk hacker")
-    print("1. hack wifi")
-    print("2. hack hp")
-    print("3. nyuri data base KTP")
-    print("4. hack atm")
-    inputs = input("masukkan skill yang mau di asah : ")
-    if inputs == "1":
-        strength += 0
-        agility += 50
-        intelligence += 100
-        return mainmenu3()
-    elif inputs == "2":
-        strength += 0
-        agility += 100
-        intelligence += 150
-        return mainmenu3()
-    elif inputs == "3":
-        strength += 0
-        agility += 150
-        intelligence += 200
-        return mainmenu3()
-    elif inputs == "4":
-        strength += 100
-        agility += 200
-        intelligence += 300
-        return mainmenu3()
-
-
 def makanan1():
     global food
     global uang
@@ -660,7 +712,6 @@ def makanan3():
         return mainmenu3()
     elif inputs == "4":
         food += 2
-        food2 += 20
         uang -= 12000
         return mainmenu3()
 
@@ -981,7 +1032,7 @@ def mainmenu2():
     global uang
     global food
     global health
-    print("1. merampok rumah orang")
+    print("1. mencuri barang rumah orang")
     print("2. daerah yang mau di rampok")
     print("3. beli makanan")
     print("4. ngecek status")
