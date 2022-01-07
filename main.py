@@ -1,13 +1,9 @@
 import time
 
-# import random
-
 # deklarasi
 from random import randint
 
-version = '0.0.1'
-# playername = ''
-# password = ''
+version = '5.0.5'
 food = 0
 uang = 0
 health = 0
@@ -15,14 +11,6 @@ maxhealth = 0
 strength = 0
 agility = 0
 intelligence = 0
-# random_hari = 0
-# tahun = 0
-# datemonth = 'januari'
-# bulan = 1
-# hari = 1
-# totalhari = 0
-# bulan_31 = [1, 3, 5, 7, 8, 10, 12]
-# event_k = random.randint(1, 3)
 datalogin = [["daffa", "123"], ["syahfei", "123"], ["fauzi", "123"], ["akbar", "123"]]
 
 
@@ -218,13 +206,12 @@ def roles2():
     inputs = input("masukkan pilihan roles anda : ")
     if inputs == "1":
         strength += 900
-        return roles3()
     elif inputs == "2":
         agility += 300
-        return roles3()
     elif inputs == "3":
         intelligence += 600
-        return roles3()
+    roles3()
+    return
 
 
 def roles3():
@@ -262,13 +249,12 @@ def roles3():
     inputs = input("masukkan pilihan roles anda : ")
     if inputs == "1":
         strength += 900
-        return karakter()
     elif inputs == "2":
         agility += 300
-        return karakter()
     elif inputs == "3":
         intelligence += 600
-        return karakter()
+    karakter()
+    return
 
 
 def karakter():
@@ -445,32 +431,53 @@ def merampok():
     global strength
     global agility
     global intelligence
+    global uang
+    global health
     print("menu untuk mau di curi")
     print("1. maling sendal")
     print("2. maling tv")
     print("3. maling motor")
     print("4. maling yang lain")
     inputs = input("masukkan skill yang mau di asah : ")
-    if inputs == "1":
-        strength += 0
-        agility += 100
-        intelligence += 50
-        return mainmenu2()
-    elif inputs == "2":
-        strength += 50
-        agility += 150
-        intelligence += 100
-        return mainmenu2()
-    elif inputs == "3":
-        strength += 100
-        agility += 250
-        intelligence += 150
-        return mainmenu2()
-    elif inputs == "4":
-        strength += 150
-        agility += 300
-        intelligence += 200
-        return maling()
+
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        health -= 10
+        uang -= 10000
+        return mainmenu1()
+    elif value <= 3:
+        print("")
+        health -= 20
+        uang -= 20000
+        return mainmenu1()
+    elif value <= 2:
+        print("")
+        health -= 30
+        uang -= 30000
+        return mainmenu1()
+    else:
+        if inputs == "1":
+            strength += 0
+            agility += 100
+            intelligence += 50
+            return mainmenu2()
+        elif inputs == "2":
+            strength += 50
+            agility += 150
+            intelligence += 100
+            return mainmenu2()
+        elif inputs == "3":
+            strength += 100
+            agility += 250
+            intelligence += 150
+            return mainmenu2()
+        elif inputs == "4":
+            strength += 150
+            agility += 300
+            intelligence += 200
+            return maling()
 
 
 def maling():
@@ -482,54 +489,93 @@ def maling():
     print("3. Maling helm")
     print("4. Maling AC")
     inputs = input("masukkan pilihan anda : ")
-    if inputs == "1":
-        health -= 3
-        uang += 10000
-        return mainmenu2()
-    elif inputs == "2":
-        health -= 4
-        uang += 20000
-        return mainmenu2()
-    elif inputs == "3":
-        health -= 5
-        uang += 30000
-        return mainmenu2()
-    elif inputs == "4":
-        health -= 6
-        uang += 40000
-        return mainmenu2()
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        health -= 10
+        uang -= 10000
+        return mainmenu1()
+    elif value <= 3:
+        print("")
+        health -= 20
+        uang -= 20000
+        return mainmenu1()
+    elif value <= 2:
+        print("")
+        health -= 30
+        uang -= 30000
+        return mainmenu1()
+    else:
+        if inputs == "1":
+            health -= 3
+            uang += 10000
+            return mainmenu2()
+        elif inputs == "2":
+            health -= 4
+            uang += 20000
+            return mainmenu2()
+        elif inputs == "3":
+            health -= 5
+            uang += 30000
+            return mainmenu2()
+        elif inputs == "4":
+            health -= 6
+            uang += 40000
+            return mainmenu2()
 
 
 def hacker():
     global strength
     global agility
     global intelligence
+    global uang
+    global health
     print("menu untuk hacker")
     print("1. hack wifi")
     print("2. hack hp")
     print("3. nyuri data base KTP")
     print("4. hack atm")
-    inputs = input("masukkan skill yang mau di asah : ")
-    if inputs == "1":
-        strength += 0
-        agility += 50
-        intelligence += 100
-        return mainmenu3()
-    elif inputs == "2":
-        strength += 0
-        agility += 100
-        intelligence += 150
-        return mainmenu3()
-    elif inputs == "3":
-        strength += 0
-        agility += 150
-        intelligence += 200
-        return mainmenu3()
-    elif inputs == "4":
-        strength += 100
-        agility += 200
-        intelligence += 300
-        return atm()
+    inputs = input("masukkan skill yang mau di asah : ")\
+
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        health -= 10
+        uang -= 10000
+        return mainmenu1()
+    elif value <= 3:
+        print("")
+        health -= 20
+        uang -= 20000
+        return mainmenu1()
+    elif value <= 2:
+        print("")
+        health -= 30
+        uang -= 30000
+        return mainmenu1()
+    else:
+        if inputs == "1":
+            strength += 0
+            agility += 50
+            intelligence += 100
+            return mainmenu3()
+        elif inputs == "2":
+            strength += 0
+            agility += 100
+            intelligence += 150
+            return mainmenu3()
+        elif inputs == "3":
+            strength += 0
+            agility += 150
+            intelligence += 200
+            return mainmenu3()
+        elif inputs == "4":
+            strength += 100
+            agility += 200
+            intelligence += 300
+            return atm()
 
 
 def atm():
@@ -541,22 +587,41 @@ def atm():
     print("3. atm BCA")
     print("4. atm Mandiri")
     inputs = input("masukkan pilihan anda : ")
-    if inputs == "1":
-        health -= 3
-        uang += 10000
-        return mainmenu3()
-    elif inputs == "2":
-        health -= 4
-        uang += 20000
-        return mainmenu3()
-    elif inputs == "3":
-        health -= 5
-        uang += 30000
-        return mainmenu3()
-    elif inputs == "4":
-        health -= 6
-        uang += 40000
-        return mainmenu3()
+
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        health -= 10
+        uang -= 10000
+        return mainmenu1()
+    elif value <= 3:
+        print("")
+        health -= 20
+        uang -= 20000
+        return mainmenu1()
+    elif value <= 2:
+        print("")
+        health -= 30
+        uang -= 30000
+        return mainmenu1()
+    else:
+        if inputs == "1":
+            health -= 3
+            uang += 10000
+            return mainmenu3()
+        elif inputs == "2":
+            health -= 4
+            uang += 20000
+            return mainmenu3()
+        elif inputs == "3":
+            health -= 5
+            uang += 30000
+            return mainmenu3()
+        elif inputs == "4":
+            health -= 6
+            uang += 40000
+            return mainmenu3()
 
 
 def daerahdikuasai():
@@ -568,30 +633,50 @@ def daerahdikuasai():
     print("3. kuasain suhat")
     print("4. kuasain ijen")
     inputs = input("masukkan pilihan anda : ")
-    if inputs == "1":
+
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
         health -= 10
-        print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
-        uang += 10000
-        print("uang yang di peroleh 10000")
+        uang -= 10000
         return mainmenu1()
-    elif inputs == "2":
+    elif value <= 3:
+        print("")
         health -= 20
-        print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
-        uang += 13000
-        print("uang yang di peroleh 13000")
+        uang -= 20000
         return mainmenu1()
-    elif inputs == "3":
-        health -= 25
-        print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
-        uang += 15000
-        print("uang yang di peroleh 15000")
-        return mainmenu1()
-    elif inputs == "4":
+    elif value <= 2:
+        print("")
         health -= 30
-        print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
-        uang += 20000
-        print("uang yang di peroleh 20000")
+        uang -= 30000
         return mainmenu1()
+    else:
+        if inputs == "1":
+            health -= 10
+            print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
+            uang += 10000
+            print("uang yang di peroleh 10000")
+            return mainmenu1()
+        elif inputs == "2":
+            health -= 20
+            print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
+            uang += 13000
+            print("uang yang di peroleh 13000")
+            return mainmenu1()
+        elif inputs == "3":
+            health -= 25
+            print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
+            uang += 15000
+            print("uang yang di peroleh 15000")
+            return mainmenu1()
+        elif inputs == "4":
+            health -= 30
+            print("health kamu berkurang karena di kejar sama polisi dan saingan gang mu")
+            uang += 20000
+            print("uang yang di peroleh 20000")
+            return mainmenu1()
+
 
 
 def daerahmaling():
@@ -603,30 +688,52 @@ def daerahmaling():
     print("3. perumahan suhat")
     print("4. perumahan ijen")
     inputs = input("masukkan pilihan anda : ")
-    if inputs == "1":
+
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
         health -= 10
-        print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah tirto utomo dan sempat di pukul")
-        uang += 10000
-        print("uang yang di peroleh 10000")
-        return mainmenu2()
-    elif inputs == "2":
+        uang -= 10000
+        return mainmenu1()
+    elif value <= 3:
+        print("")
         health -= 20
-        print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah sukun dan sempat di pukul")
-        uang += 13000
-        print("uang yang di peroleh 13000")
-        return mainmenu2()
-    elif inputs == "3":
-        health -= 25
-        print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah suhat dan sempat di pukul")
-        uang += 15000
-        print("uang yang di peroleh 15000")
-        return mainmenu2()
-    elif inputs == "4":
+        uang -= 20000
+        return mainmenu1()
+    elif value <= 2:
+        print("")
         health -= 30
-        print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah ijen dan sempat di pukul")
-        uang += 20000
-        print("uang yang di peroleh 20000")
-        return mainmenu2()
+        uang -= 30000
+        return mainmenu1()
+    else:
+        if inputs == "1":
+            health -= 10
+            print(
+                "health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah tirto utomo dan sempat di pukul")
+            uang += 10000
+            print("uang yang di peroleh 10000")
+            return mainmenu2()
+        elif inputs == "2":
+            health -= 20
+            print(
+                "health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah sukun dan sempat di pukul")
+            uang += 13000
+            print("uang yang di peroleh 13000")
+            return mainmenu2()
+        elif inputs == "3":
+            health -= 25
+            print(
+                "health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah suhat dan sempat di pukul")
+            uang += 15000
+            print("uang yang di peroleh 15000")
+            return mainmenu2()
+        elif inputs == "4":
+            health -= 30
+            print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah ijen dan sempat di pukul")
+            uang += 20000
+            print("uang yang di peroleh 20000")
+            return mainmenu2()
 
 
 def daerahhacker():
@@ -638,30 +745,48 @@ def daerahhacker():
     print("3. serang cyber lamongan")
     print("4. serang cyber surabaya")
     inputs = input("masukkan pilihan anda : ")
-    if inputs == "1":
+    value = randint(0, 10)
+
+    if value <= 4:
+        print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
         health -= 10
-        print("health kamu berkurang karena di kejar sama polisi")
-        uang += 10000
-        print("uang yang di peroleh 10000")
-        return mainmenu3()
-    elif inputs == "2":
+        uang -= 10000
+        return mainmenu1()
+    elif value <= 3:
+        print("")
         health -= 20
-        print("health kamu berkurang karena di kejar sama polisi")
-        uang += 13000
-        print("uang yang di peroleh 13000")
-        return mainmenu3()
-    elif inputs == "3":
-        health -= 25
-        print("health kamu berkurang karena di kejar sama polisi")
-        uang += 15000
-        print("uang yang di peroleh 15000")
-        return mainmenu3()
-    elif inputs == "4":
+        uang -= 20000
+        return mainmenu1()
+    elif value <= 2:
+        print("")
         health -= 30
-        print("health kamu berkurang karena di kejar sama polisi")
-        uang += 20000
-        print("uang yang di peroleh 20000")
-        return mainmenu3()
+        uang -= 30000
+        return mainmenu1()
+    else:
+        if inputs == "1":
+            health -= 10
+            print("health kamu berkurang karena di kejar sama polisi")
+            uang += 10000
+            print("uang yang di peroleh 10000")
+            return mainmenu3()
+        elif inputs == "2":
+            health -= 20
+            print("health kamu berkurang karena di kejar sama polisi")
+            uang += 13000
+            print("uang yang di peroleh 13000")
+            return mainmenu3()
+        elif inputs == "3":
+            health -= 25
+            print("health kamu berkurang karena di kejar sama polisi")
+            uang += 15000
+            print("uang yang di peroleh 15000")
+            return mainmenu3()
+        elif inputs == "4":
+            health -= 30
+            print("health kamu berkurang karena di kejar sama polisi")
+            uang += 20000
+            print("uang yang di peroleh 20000")
+            return mainmenu3()
 
 
 def makanan1():
