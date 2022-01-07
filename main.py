@@ -11,6 +11,7 @@ maxhealth = 0
 strength = 0
 agility = 0
 intelligence = 0
+indexuser = 4
 datalogin = [["daffa", "123"], ["syahfei", "123"], ["fauzi", "123"], ["akbar", "123"]]
 
 
@@ -63,14 +64,13 @@ def cariUser(user, cari):
     menupertama()
     return
 
-
 def register(username, password):
     global datalogin
-    i = 2
+    global indexuser
     newUser = [username, password]
     if newUser not in datalogin:
-        datalogin.insert(i, newUser)
-    i = +1
+        indexuser += 1
+        datalogin.insert(indexuser, newUser)
     return menupertama()
 
 
@@ -325,7 +325,7 @@ def memalak():
     print("4. jual narkoba")
     inputs = input("masukkan skill yang mau di asah : ")
 
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -415,7 +415,7 @@ def narkoba():
     print("4. heroin ( putaw )")
     inputs = input("masukkan pilihan anda : ")
 
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -495,7 +495,7 @@ def merampok():
     print("4. maling yang lain")
     inputs = input("masukkan skill yang mau di asah : ")
 
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -578,7 +578,7 @@ def maling():
     print("3. Maling helm")
     print("4. Maling AC")
     inputs = input("masukkan pilihan anda : ")
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -658,7 +658,7 @@ def hacker():
     print("4. hack atm")
     inputs = input("masukkan skill yang mau di asah : ")\
 
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -742,7 +742,7 @@ def atm():
     print("4. atm Mandiri")
     inputs = input("masukkan pilihan anda : ")
 
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -822,7 +822,7 @@ def daerahdikuasai():
     print("4. kuasain ijen")
     inputs = input("masukkan pilihan anda : ")
 
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -911,7 +911,7 @@ def daerahmaling():
     print("4. perumahan ijen")
     inputs = input("masukkan pilihan anda : ")
 
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -998,7 +998,7 @@ def daerahhacker():
     print("3. serang cyber lamongan")
     print("4. serang cyber surabaya")
     inputs = input("masukkan pilihan anda : ")
-    value = randint(0, 10)
+    value = randint(0, 20)
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
@@ -1170,7 +1170,7 @@ def makanan3():
 
 
 def rules(func):
-    def warper():  # closur
+    def warper():  # closure
         pilihan = func()  # high order
         print("rules game")
         print("1. Bila Uang Yang Dimiliki Kurang Dari 0 Maka Anda Kalah")
@@ -1190,9 +1190,9 @@ def rules(func):
 @rules
 def introduction1():
     print("pilih tipe karakter yang anda minatin : ")
-    print("1. strangth")
-    print("2. agility")
-    print("3. intelgenent")
+    print("1. strangth ( gangstar )")
+    print("2. agility ( pencuri )")
+    print("3. intelligence ( Hacker )")
     inputs = input("masukkan pilihan karakter anda : ")
 
     print("sabar")
@@ -1295,35 +1295,36 @@ def mainmenu1():
                 print("salah input")
                 return mainmenu1()
 
-    if uang >= 110000:
-        if uang <= 110000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu1()
-        if uang <= 150000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu1()
-        if uang <= 180000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu1()
+    if uang >= 200000:
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu1()
+    elif uang >= 180000:
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu1()
+    elif uang >= 150000:
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu1()
+    elif uang >= 110000:
         print("uang kamu sudah terlalu banyak kamu harus balik")
         time.sleep(1.5)
         print("kamu sudah balik ke kampung dengan terpaksa karena uang kamu terlalu banyak")
         quit()
+
 
     if food <= 0:
         print("challenge gagal")
@@ -1407,30 +1408,30 @@ def mainmenu2():
                 return mainmenu2()
 
     if uang >= 200000:
-        if uang <= 110000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu2()
-        if uang <= 150000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu2()
-        if uang <= 180000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu2()
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu2()
+    elif uang >= 180000:
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu2()
+    elif uang >= 150000:
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu2()
+    elif uang >= 110000:
         print("uang kamu sudah terlalu banyak kamu harus balik")
         time.sleep(1.5)
         print("kamu sudah balik ke kampung dengan terpaksa karena uang kamu terlalu banyak")
@@ -1516,31 +1517,32 @@ def mainmenu3():
             else:
                 print("salah input")
                 return mainmenu3()
+
     if uang >= 200000:
-        if uang <= 110000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu3()
-        if uang <= 150000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu3()
-        if uang <= 180000:
-            print("apakah kamu mau balik ke kota asal kamu")
-            print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
-            pilihan = input("masukkan pilihan anda : ")
-            if pilihan == "y":
-                quit()
-            elif pilihan == "n":
-                return mainmenu3()
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu3()
+    elif uang >= 180000:
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu3()
+    elif uang >= 150000:
+        print("apakah kamu mau balik ke kota asal kamu")
+        print("jika iya pilih tombol Y, jika kamu masih tetap di malang tekan N")
+        pilihan = input("masukkan pilihan anda : ")
+        if pilihan == "y":
+            quit()
+        elif pilihan == "n":
+            return mainmenu3()
+    elif uang >= 110000:
         print("uang kamu sudah terlalu banyak kamu harus balik")
         time.sleep(1.5)
         print("kamu sudah balik ke kampung dengan terpaksa karena uang kamu terlalu banyak")
