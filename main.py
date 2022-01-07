@@ -330,28 +330,49 @@ def memalak():
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
         health -= 10
-        uang -= 10000
         strength += 20
         agility += 5
         intelligence += 0
+        uang -= 10000
         return mainmenu1()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
         health -= 20
-        uang -= 20000
         strength += 20
         agility += 5
         intelligence += 0
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang/4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
         return mainmenu1()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
         health -= 30
-        uang -= 30000
         strength += 20
         agility += 5
         intelligence += 0
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang/2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
         return mainmenu1()
-
     else:
         if inputs == "1":
             health -= 3
@@ -384,6 +405,9 @@ def memalak():
 def narkoba():
     global health
     global uang
+    global strength
+    global agility
+    global intelligence
     print("narkoba yang mau di jual")
     print("1. ganja")
     print("2. sabu")
@@ -395,18 +419,49 @@ def narkoba():
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        strength += 20
+        agility += 5
+        intelligence += 0
         health -= 10
         uang -= 10000
         return mainmenu1()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
+        strength += 20
+        agility += 5
+        intelligence += 0
         health -= 20
-        uang -= 20000
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
         return mainmenu1()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
+        strength += 20
+        agility += 5
+        intelligence += 0
         health -= 30
-        uang -= 30000
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
         return mainmenu1()
     else:
         if inputs == "1":
@@ -444,19 +499,50 @@ def merampok():
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 10
         uang -= 10000
-        return mainmenu1()
+        return mainmenu2()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 20
-        uang -= 20000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu2()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 30
-        uang -= 30000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu2()
     else:
         if inputs == "1":
             strength += 0
@@ -483,6 +569,9 @@ def merampok():
 def maling():
     global health
     global uang
+    global strength
+    global agility
+    global intelligence
     print("barang yang mau di maling")
     print("1. Maling rice cooker")
     print("2. Maling sepatu")
@@ -493,19 +582,50 @@ def maling():
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 10
         uang -= 10000
-        return mainmenu1()
+        return mainmenu2()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 20
-        uang -= 20000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu2()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 30
-        uang -= 30000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu2()
     else:
         if inputs == "1":
             health -= 3
@@ -542,19 +662,50 @@ def hacker():
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 10
         uang -= 10000
-        return mainmenu1()
+        return mainmenu3()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 20
-        uang -= 20000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu3()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 30
-        uang -= 30000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu3()
     else:
         if inputs == "1":
             strength += 0
@@ -581,6 +732,9 @@ def hacker():
 def atm():
     global health
     global uang
+    global strength
+    global agility
+    global intelligence
     print("atm yang mau di serang")
     print("1. atm BRI")
     print("2. atm BNI")
@@ -592,19 +746,50 @@ def atm():
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 10
         uang -= 10000
-        return mainmenu1()
+        return mainmenu3()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 20
-        uang -= 20000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu3()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 30
-        uang -= 30000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu3()
     else:
         if inputs == "1":
             health -= 3
@@ -627,6 +812,9 @@ def atm():
 def daerahdikuasai():
     global health
     global uang
+    global strength
+    global agility
+    global intelligence
     print("daerah yang mau di gangstar")
     print("1. kuasain tirto utomo")
     print("2. kuasain sukun")
@@ -638,18 +826,49 @@ def daerahdikuasai():
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        strength += 20
+        agility += 5
+        intelligence += 0
         health -= 10
         uang -= 10000
         return mainmenu1()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
+        strength += 20
+        agility += 5
+        intelligence += 0
         health -= 20
-        uang -= 20000
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
         return mainmenu1()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
+        strength += 20
+        agility += 5
+        intelligence += 0
         health -= 30
-        uang -= 30000
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
         return mainmenu1()
     else:
         if inputs == "1":
@@ -682,6 +901,9 @@ def daerahdikuasai():
 def daerahmaling():
     global health
     global uang
+    global strength
+    global agility
+    global intelligence
     print("daerah yang mau di rampok")
     print("1. perumahan tirto utomo")
     print("2. perumahan sukun")
@@ -693,38 +915,66 @@ def daerahmaling():
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 10
         uang -= 10000
-        return mainmenu1()
+        return mainmenu2()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 20
-        uang -= 20000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu2()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
+        strength += 5
+        agility += 20
+        intelligence += 5
         health -= 30
-        uang -= 30000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu2()
     else:
         if inputs == "1":
             health -= 10
-            print(
-                "health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah tirto utomo dan sempat di pukul")
+            print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah tirto utomo dan sempat di pukul")
             uang += 10000
             print("uang yang di peroleh 10000")
             return mainmenu2()
         elif inputs == "2":
             health -= 20
-            print(
-                "health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah sukun dan sempat di pukul")
+            print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah sukun dan sempat di pukul")
             uang += 13000
             print("uang yang di peroleh 13000")
             return mainmenu2()
         elif inputs == "3":
             health -= 25
-            print(
-                "health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah suhat dan sempat di pukul")
+            print("health kamu berkurang karena di kejar sama satpam dan warga sekitar daerah suhat dan sempat di pukul")
             uang += 15000
             print("uang yang di peroleh 15000")
             return mainmenu2()
@@ -739,6 +989,9 @@ def daerahmaling():
 def daerahhacker():
     global health
     global uang
+    global strength
+    global agility
+    global intelligence
     print("daerah yang mau di serang")
     print("1. serang cyber malang")
     print("2. serang cyber batu")
@@ -749,19 +1002,50 @@ def daerahhacker():
 
     if value <= 4:
         print("Akasi gagal\nada warga yg memergoki kamu\ntapi kamu berhasil lari.")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 10
         uang -= 10000
-        return mainmenu1()
+        return mainmenu3()
     elif value <= 3:
-        print("")
+        print("kamu di jebak sama teman mu dan kamu di tangkap polisi")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 20
-        uang -= 20000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 4
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu3()
     elif value <= 2:
-        print("")
+        print("kamu di tangkap polisi")
+        strength += 5
+        agility += 10
+        intelligence += 20
         health -= 30
-        uang -= 30000
-        return mainmenu1()
+        if uang >= 100000:
+            print("apa kamu mau keluar dari penjara?")
+            pilihan = input("apa kah mau di ulangin : ")
+            if pilihan == "y":
+                uang -= uang / 2
+                return mainmenu1()
+            elif pilihan == "n":
+                print("kamu memilih di penjara karena kamu pelit")
+                quit()
+        else:
+            print("uang mu habis dan kamu di penjara selama nya")
+            quit()
+        return mainmenu3()
     else:
         if inputs == "1":
             health -= 10
@@ -800,18 +1084,22 @@ def makanan1():
     print("4. AW sarsafalila")
     inputs = input("masukkan pilihan : ")
     if inputs == "1":
+        strength += 10
         food += 4
         uang -= 70000
         return mainmenu1()
     elif inputs == "2":
+        strength += 8
         food += 3
         uang -= 50000
         return mainmenu1()
     elif inputs == "3":
+        strength += 4
         food += 1
         uang -= 6000
         return mainmenu1()
     elif inputs == "4":
+        strength += 6
         food += 2
         uang -= 12000
         return mainmenu1()
@@ -828,18 +1116,22 @@ def makanan2():
     print("4. AW sarsafalila")
     inputs = input("masukkan pilihan : ")
     if inputs == "1":
+        agility += 10
         food += 4
         uang -= 70000
         return mainmenu2()
     elif inputs == "2":
+        agility += 8
         food += 3
         uang -= 50000
         return mainmenu2()
     elif inputs == "3":
+        agility += 4
         food += 1
         uang -= 6000
         return mainmenu2()
     elif inputs == "4":
+        agility += 6
         food += 2
         uang -= 12000
         return mainmenu2()
@@ -856,103 +1148,25 @@ def makanan3():
     print("4. AW sarsafalila")
     inputs = input("masukkan pilihan : ")
     if inputs == "1":
+        intelligence += 10
         food += 4
         uang -= 70000
         return mainmenu3()
     elif inputs == "2":
+        intelligence += 8
         food += 3
         uang -= 50000
         return mainmenu3()
     elif inputs == "3":
+        intelligence += 4
         food += 1
         uang -= 6000
         return mainmenu3()
     elif inputs == "4":
+        intelligence += 6
         food += 2
         uang -= 12000
         return mainmenu3()
-
-
-# def next(min, max):
-#     global hari
-#     global bulan
-#     global bulan_31
-#     global random_hari
-#     global food
-#     global health
-#     global health_d1
-#     global health_d2
-#     global totalhari
-#     global event_k
-#
-#     random_hari = random.randint(min, max)
-#     print("sudah ", random_hari, "hari berlangsung ")
-#     hari_min = hari
-#     cek_rata = hari + random_hari
-#
-#     if event_k == 1:
-#         a_number = random.randint(1, 6)
-#         a_health_num = random.randint(1, 3)
-#         random_hari2_food = random.randint(5, 30)
-#         random_hari2_hari = random.randint(1, 10)
-#         if a_number == 1:
-#             print("pada waktu ini, kamu mencari mangsa")
-#         if a_number == 2:
-#             print("pada waktu ini, kamu sakit")
-#             health -= 1
-#         if a_number == 3:
-#             print("pada waktu ini, kamu di begal")
-#             food -= 35
-#             print("kehilangan 35 kg berat badan")
-#         if a_number == 4:
-#             print("pada waktu ini, partner mu menghianat")
-#             totalhari += random_hari2_hari
-#             hari += random_hari2_hari
-#             print("makan waktu " + str(random_hari2_hari) + " hari buat meorginisir barang")
-#         if a_number == 5:
-#             print("pada waktu ini, kamu kena busur")
-#             health -= 4
-#         if a_number == 6:
-#             print("pada waktu ini, jalan lagi di perbaiki, kamu terpaksa mutar lewat jalan lain")
-#             totalhari += random_hari2_hari
-#             hari += random_hari2_hari
-#             food -= random_hari2_food
-#             print("karena itu, kamu makan " + str(random_hari2_food) + " kg")
-#             print("makan waktu " + str(random_hari2_hari) + " hari buat istirahat")
-#         if a_health_num == 1:
-#             print("dan juga kehilangan 1 health")
-#             health -= 1
-#         food = food - random_hari2_food - random_hari2_hari * 5
-#         hari += random_hari2_hari
-#         totalhari += random_hari2_hari
-#
-#     cek_rata = hari + random_hari
-#     if health_d1 >= hari_min and health_d1 <= cek_rata:
-#         health -= 1
-#         print("kamu kehilangan 1 health")
-#     if health_d2 >= hari_min and health_d2 <= cek_rata:
-#         health -= 1
-#         print("kamu kehilangan 1 health")
-#
-#     hari += random_hari
-#     totalhari += random_hari
-#     food = random_hari * 5
-#
-#     if hari >= 30:
-#         if bulan not in bulan_31:
-#             if hari > 30:
-#                 hari -= 30
-#                 bulan += 1
-#                 health_d1 = random.randint(1, 30)
-#                 health_d2 = random.randint(1, 30)
-#                 event_k = random.randint(1, 3)
-#             else:
-#                 if hari > 31:
-#                     hari -= 31
-#                     bulan += 1
-#                     health_d1 = random.randint(1, 30)
-#                     health_d2 = random.randint(1, 30)
-#                     event_k = random.randint(1, 4)
 
 
 def rules(func):
@@ -1128,14 +1342,6 @@ def mainmenu1():
         elif pilihan == "n":
             quit()
 
-    # if bulan >= 13:
-    #     print("game over darah kamu habis")
-    #     pilihan = input("apakah anda mau main (Y,N) : ")
-    #     if pilihan == "y":
-    #         start()
-    #     elif pilihan == "n":
-    #         quit()
-
 
 def mainmenu2():
     global uang
@@ -1247,14 +1453,6 @@ def mainmenu2():
         elif pilihan == "n":
             quit()
 
-    # if bulan >= 13:
-    #     print("game over darah kamu habis")
-    #     pilihan = input("apakah anda mau main (Y,N) : ")
-    #     if pilihan == "y":
-    #         start()
-    #     elif pilihan == "n":
-    #         quit()
-
 
 def mainmenu3():
     global uang
@@ -1364,14 +1562,6 @@ def mainmenu3():
             start()
         elif pilihan == "n":
             quit()
-
-    # if bulan >= 13:
-    #     print("game over darah kamu habis")
-    #     pilihan = input("apakah anda mau main (Y,N) : ")
-    #     if pilihan == "y":
-    #         start()
-    #     elif pilihan == "n":
-    #         quit()
 
 
 def start():  # pure funcion
